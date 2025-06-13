@@ -3,7 +3,7 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-# --- ALGORITMOS DE BUSCA ---
+#  ALGORITMOS DE BUSCA 
 
 def busca_sequencial(lista, elemento):
     posicoes_visitadas = 0
@@ -30,7 +30,7 @@ def busca_binaria(lista, elemento):
             
     return -1, posicoes_visitadas
 
-# --- FUNÇÃO DE TESTES ---
+# FUNÇÃO DE TESTES 
 
 def executar_testes(tamanhos_entrada):
     resultados_completos = []
@@ -42,7 +42,7 @@ def executar_testes(tamanhos_entrada):
     for tamanho in tamanhos_entrada:
         conjunto_dados = sorted(random.sample(range(tamanho * 2), tamanho))
         
-        # --- CASO MÉDIO ---
+        # CASO MÉDIO 
         elemento_medio = random.choice(conjunto_dados)
 
         # Teste Sequencial - Médio
@@ -59,7 +59,7 @@ def executar_testes(tamanhos_entrada):
         print(f"{tamanho:<18} | {'Caso Médio':<15} | {'Busca Binária':<18} | {tempo_bin_medio:<15.6f} | {visitadas_bin_medio:<20}")
         resultados_completos.append({'tamanho': tamanho, 'caso': 'Médio', 'algoritmo': 'Binária', 'tempo': tempo_bin_medio, 'visitas': visitadas_bin_medio})
 
-        # --- PIOR CASO ---
+        # PIOR CASO
         elemento_pior_caso = tamanho * 2 + 1 
 
         # Teste Sequencial - Pior
@@ -80,7 +80,7 @@ def executar_testes(tamanhos_entrada):
     
     return resultados_completos
 
-# --- GRÁFICOS COM CURVAS TEÓRICAS E TICKS FIXOS ---
+# GRÁFICOS COM CURVAS TEÓRICAS E TICKS FIXOS
 
 def gerar_graficos(resultados, tamanhos):
     tempos_seq = [r['tempo'] for r in resultados if r['algoritmo'] == 'Sequencial' and r['caso'] == 'Pior']
@@ -104,7 +104,7 @@ def gerar_graficos(resultados, tamanhos):
     axs[0].set_title('Tempo de Execução (Pior Caso)', fontsize=14)
     axs[0].set_xlabel('Tamanho da Entrada (n)', fontsize=12)
     axs[0].set_ylabel('Tempo (s)', fontsize=12)
-    axs[0].set_xticks(tamanhos)  # <- TICKS FIXOS
+    axs[0].set_xticks(tamanhos)
     axs[0].legend(fontsize=10)
     axs[0].grid(True)
 
@@ -129,7 +129,7 @@ def gerar_graficos(resultados, tamanhos):
     print("\nGráficos salvos com sucesso em 'graficos_comparativos.png' e '.svg'")
     plt.show()
 
-# --- EXECUÇÃO ---
+#EXECUÇÃO
 
 if __name__ == "__main__":
     tamanhos_de_entrada = [1000, 10000, 100000]
